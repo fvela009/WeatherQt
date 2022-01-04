@@ -16,6 +16,9 @@
         </template>
       </q-input>
       </div>
+
+      <template v-if="weatherData">
+
       <div class="col text-white text-center">
         <div class="text-h4 text-weight-light">
           Miami
@@ -27,12 +30,18 @@
           <span>8</span>
           <span class="text-h4 relative-position degree">&deg;</span>
         </div>
+      </div>
+      
+        <div class="col text-white text-center">
+        </div>
+
         <div class="col text-center">
           <img src= "https://www.fillmurray.com/100/100" alt="Bill">
         </div>
+        </template>
+
 
         <div class="col skyline"></div>
-      </div>
   </q-page>
 </template>
 
@@ -43,7 +52,8 @@ export default defineComponent({
   name: 'PageIndex',
   data() {
     return {
-      search: ''
+      search: '',
+      weatherData: null
     }
   }
 })
