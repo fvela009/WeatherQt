@@ -8,7 +8,10 @@
         borderless 
         >
         <template v-slot:before>
-          <q-icon name="my_location" />
+          <q-icon
+            @click="getLocation"
+            name="my_location" 
+            />
         </template>
 
         <template v-slot:append>
@@ -40,7 +43,21 @@
         </div>
         </template>
 
-
+        <template v-else>
+          <div class="col column text-center text-white">
+            <div class="col text-h2 text-weight-thin">
+              Quasar<br>Weather
+            </div>
+            <q-btn 
+              @click="getLocation"
+              class="col" 
+              flat
+            >
+              <q-icon left size="3em" name="my_location" />
+                <div>Find my location</div>
+            </q-btn>
+          </div>
+        </template>
         <div class="col skyline"></div>
   </q-page>
 </template>
@@ -53,7 +70,19 @@ export default defineComponent({
   data() {
     return {
       search: '',
-      weatherData: null
+      weatherData: null,
+      lat: null,
+      lon: null
+    }
+  },
+  methods: {
+    getLocation() {
+      navigator.geolocation.getCurrentPosition
+      (position => {
+        console.log('position: ', position)
+        this.lat = position.coords.latitude
+        this.long = position.coords.longitude
+      })
     }
   }
 })
