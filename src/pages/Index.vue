@@ -103,7 +103,7 @@ export default defineComponent({
         this.$axios.get('https://freegeoip.app/json/').then(response => {
           this.lat = response.data.latitude
           this.lon = response.data.longitude
-          this.getWeatherByCoords
+          this.getWeatherByCoords()
         })
       }
       else {
